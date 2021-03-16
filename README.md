@@ -8,3 +8,4 @@ For reserving a spot faster than anyone else the bot sends a HTTP 'POST' request
 Because of this the Bot does not need to interact with any HTML elements on the page and wait for different pages to load in order to book a slot.
 Therefore, it's always faster than a human.
 
+edit user_data.json for your own use.
