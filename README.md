@@ -10,4 +10,4 @@ Therefore, it's always faster than a human.
 
 edit user_data.json for your own use.
 
-includes the driver for Chrome v88, if you are running a different version of Chrome find the webdriver here: https://chromedriver.chromium.org/downloads then update the webdriver path in user_data.json file to your newly downloaded webdriver's path.
+includes the driver for Chrome v89, if you are running a different version of Chrome find the webdriver here: https://chromedriver.chromium.org/downloads then update the webdriver path in user_data.json file to your newly downloaded webdriver's path.
