@@ -1,4 +1,4 @@
-# AthleticsCentreBot
+# AthleticsCenterBot
 Basic functionality is complete.
 
 Automatically reserve spots at the Athletic Centre faster than everyone else.
