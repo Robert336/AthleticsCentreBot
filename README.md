@@ -17,3 +17,5 @@ Next steps:
  - create GUI
  - Remotly Host on Raspberry Pi
  - General optimisation (use faster search algorithims)
+ - Fix login timeout issues
+ - Add reserved times to Google Calendar
