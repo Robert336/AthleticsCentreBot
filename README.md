@@ -14,7 +14,7 @@ includes the driver for Chrome v89, if you are running a different version of Ch
 
 
 Next steps:
- - Transform in Web app with GUI
+ - Transform into web app
  - Remotly Host on Raspberry Pi
  - Impliment multi-thread processing to handle multiple users
  - General optimisation (use faster search algorithims)
