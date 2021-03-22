@@ -14,9 +14,9 @@ includes the driver for Chrome v89, if you are running a different version of Ch
 
 
 Next steps:
- - Transform into web app
- - Remotly Host on Raspberry Pi
- - Impliment multi-thread processing to handle multiple users
- - General optimisation (use faster search algorithims)
- - Fix login timeout issues
- - Add reserved times to Google Calendar
+ - [ ] Transform into web app using Flask
+ - [ ] Remotly Host on Raspberry Pi to run 24/7
+ - [ ] Impliment multi-thread processing to handle multiple users at the same time
+ - [ ] General optimisation (use faster search algorithims)
+ - [x] Fix login timeout issues
+ - [ ] Add reserved times to Google Calendar
