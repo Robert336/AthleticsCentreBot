@@ -21,7 +21,7 @@ Next steps: (not in order)
  - [ ] General optimisation. Use faster search algorithims for finding Slot IDs
  - [x] Fix login timeout issues
  - [x] Reduce CPU usage
- - [ ] Reduce RAM usage
+ - [x] Reduce RAM usage
  - [ ] Add reserved times to Google Calendar
 
 
