@@ -73,6 +73,7 @@ def get_table_data(driver):
     return table_data
 """
 
+
 # used to yield table rows to use less RAM
 def table_row_generator(driver):
     # find the table with reservation data

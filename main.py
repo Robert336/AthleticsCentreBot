@@ -46,10 +46,11 @@ def main():
     functions.logout(driver)
 
     # creating datetime object
-    reservation_time_obj = datetime.datetime.strptime(reservation_time_str, '%H:%M:%S')
+    reservation_time_obj = datetime.datetime.strptime(reservation_date_str + " " + reservation_time_str, '%Y-%m-%d '
+                                                                                                         '%H:%M:%S')
 
     # auto-request at the right time using scheduler
-    # schedule.every().day.at(reservation_time_str[0:5]).do(functions.reserve, slot_id=slot_id, driver=driver)
+    # schedule.every().day.do(update_reservation_data(driver, user_data))
 
     # user is not logged in (0 = false)
     logged_in = 0
@@ -61,14 +62,54 @@ def main():
 
         # login 5 mins before reservation time
         now = datetime.datetime.now()
+        today = datetime.datetime.today()
         if logged_in == 0 and now.hour == (reservation_time_obj.hour - 1) and now.minute >= 59 and now.second >= 30:
+            print(">>> Logging in as: %s" % user_data["email"])
             functions.login(user_data["email"], user_data["password"], driver)
             logged_in = 1
+
         elif logged_in == 1 and now.hour == reservation_time_obj.hour and now.minute == 0 and now.second < 10:
             functions.reserve(slot_id, driver)
 
+        elif logged_in == 1:
+            print("logging out")
+            functions.logout(driver)
+            logged_in = 0
+
         if logged_in == 0:
-            time.sleep(2)  # if still far from reservation time, use less CPU with time.sleep
+            time.sleep(3)  # if still far from reservation time, use less CPU with time.sleep
+            # schedule.run_pending()
+
+        # used to sync data if ran 24/7 and days become out-of-sync
+        if today.day + 4 != reservation_time_obj.day:
+            # login to portal
+            print(">>> Logging in as: %s" % user_data["email"])
+            functions.login(user_data["email"], user_data["password"], driver)
+
+            print(">>> Showing all entries")
+            functions.open_table(driver)
+
+            # update the slot_id and reservation time match the correct day (new day)
+            slot_id, reservation_time_obj = sync_days(driver, user_data)
+
+            # logout to prevent session timout issue
+            print("logging out")
+            functions.logout(driver)
 
 
-main()
+def sync_days(driver, user_data):
+    # Find what time the user is registering for (assume their input is correct)
+    reservation_date_str, reservation_time_str = functions.find_time_slot(user_data)
+
+    # find the SlotID of the reservation (to be used in HTTP request)
+    slot_id = functions.find_slot_id(user_data["reserve_name"], reservation_date_str, reservation_time_str, driver)
+    print("SlotID : %s" % slot_id)
+
+    # creating datetime object
+    reservation_time_obj = datetime.datetime.strptime(reservation_date_str + " " + reservation_time_str, '%Y-%m-%d '
+                                                                                                         '%H:%M:%S')
+
+    return slot_id, reservation_time_obj
+
+
+main()  # run the script
