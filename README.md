@@ -13,7 +13,7 @@ edit user_data.json for your own use.
 includes the driver for Chrome v89, if you are running a different version of Chrome find the webdriver here: https://chromedriver.chromium.org/downloads then update the webdriver path in user_data.json file to your newly downloaded webdriver's path.
 
 super scuffed discovery: The site has no authentication for canceling reservations, meaning if you send a 'POST' request to the server with the correct parameters it will remove the reservation. Even if it doesn't belong to you... yikes.
- - Disclaimer: I tested this using a booking made by my friend. No reservations were harmed in this discovery.
+Disclaimer: I tested this using a booking made by my friend. No reservations were harmed in this discovery.
 
 Next steps:
  - [ ] Transform into web app using Flask
