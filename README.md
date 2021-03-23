@@ -12,13 +12,18 @@ edit user_data.json for your own use.
 
 includes the driver for Chrome v89, if you are running a different version of Chrome find the webdriver here: https://chromedriver.chromium.org/downloads then update the webdriver path in user_data.json file to your newly downloaded webdriver's path.
 
-super scuffed discovery: The site has no authentication for canceling reservations, meaning if you send a 'POST' request to the server with the correct parameters it will remove the reservation. Even if it doesn't belong to you... yikes.
-Disclaimer: I tested this using a booking made by my friend. No reservations were harmed in this discovery.
 
-Next steps:
+
+Next steps: (not in order)
  - [ ] Transform into web app using Flask
  - [ ] Remotly Host on Raspberry Pi to run 24/7
  - [ ] Impliment multi-thread processing to handle multiple users at the same time
- - [ ] General optimisation (use faster search algorithims)
+ - [ ] General optimisation. Use faster search algorithims for finding Slot IDs
  - [x] Fix login timeout issues
+ - [x] Reduce CPU usage
+ - [ ] Reduce RAM usage
  - [ ] Add reserved times to Google Calendar
+
+
+*secuirty flaw discovery*: The site has no authentication for canceling reservations, meaning if you send a 'POST' request to the server with the correct parameters it will remove the reservation. Even if it doesn't belong to you... yikes.
+Disclaimer: I tested this using a booking made by my friend. No reservations were harmed in this discovery.
