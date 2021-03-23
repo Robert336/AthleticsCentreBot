@@ -45,6 +45,8 @@ def open_table(driver):
 # XPath to Data Table >>>  //*[@id="DataTables_Table_1"]/tbody
 # XPath to table Header >>> //*[@id="DataTables_Table_1"]/thead
 
+""" ***NO USE AT THE MOMENT***
+
 # pulls all data from the table and turns it into a 2d list
 # Parameters:   driver - webdriver object
 # Return: table_data - 2d list, Strings
@@ -69,16 +71,34 @@ def get_table_data(driver):
         table_data.append(colData)
 
     return table_data
+"""
+
+# used to yield table rows to use less RAM
+def table_row_generator(driver):
+    # find the table with reservation data
+    table = driver.find_element_by_xpath('//*[@id="DataTables_Table_1"]/tbody')
+
+    # iterate over the rows
+    for row in table.find_elements_by_xpath('.//tr'):
+        row_data = list()
+        # for each column add the parsed String data to the row list (row_data)
+        for col in row.find_elements_by_xpath('.//td'):
+            row_data.append(col.text)
+
+        yield row_data  # list of String data representing a single row
 
 
 # returns the SlotID that contains the same data as the args
-def find_slot_id(name_str, date_str, time_str, table_data):
+def find_slot_id(name_str, date_str, time_str, driver):  # removed param "table_data"
     slot_id = None
+
     # iterate through rows of the table
-    for row in table_data:
+    for row in table_row_generator(driver):
+        # print(row)
         # Check if the current row matches the parameters
         if name_str in row[1] and date_str == row[3] and time_str == row[4]:
             slot_id = row[0]  # found SlotID for reservation
+            break
 
     return slot_id
 

@@ -30,14 +30,16 @@ def main():
     print(">>> Showing all entries")
     functions.open_table(driver)
 
+    """ unused "table_data", switched to using generators for more efficiency.
     print(">>> Fetching table data")
     table_data = functions.get_table_data(driver)
+    """
 
     # Find what time the user is registering for (assume their input is correct)
     reservation_date_str, reservation_time_str = functions.find_time_slot(user_data)
 
     # find the SlotID of the reservation (to be used in HTTP request)
-    slot_id = functions.find_slot_id(user_data["reserve_name"], reservation_date_str, reservation_time_str, table_data)
+    slot_id = functions.find_slot_id(user_data["reserve_name"], reservation_date_str, reservation_time_str, driver)
     print("SlotID : %s" % slot_id)
 
     # logout to prevent session timout issue
