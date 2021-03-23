@@ -59,13 +59,14 @@ def main():
 
         # login 5 mins before reservation time
         now = datetime.datetime.now()
-        if logged_in == 0 and now.hour == (reservation_time_obj.hour - 1) and now.minute >= 59:
+        if logged_in == 0 and now.hour == (reservation_time_obj.hour - 1) and now.minute >= 59 and now.second >= 30:
             functions.login(user_data["email"], user_data["password"], driver)
             logged_in = 1
-        if logged_in == 1 and now.hour == reservation_time_obj.hour and now.minute == 0 and now.second < 20:
+        elif logged_in == 1 and now.hour == reservation_time_obj.hour and now.minute == 0 and now.second < 10:
             functions.reserve(slot_id, driver)
 
-        # time.sleep(1)
+        if logged_in == 0:
+            time.sleep(2)  # if still far from reservation time, use less CPU with time.sleep
 
 
 main()
