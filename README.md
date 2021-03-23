@@ -19,8 +19,8 @@ Next steps: (not in order)
  - [ ] (in-progress, 24/7 part is done) Remotly Host on Raspberry Pi to run 24/7
  - [ ] Impliment multi-thread processing to handle multiple users at the same time
  - [x] Fix login timeout issues
- - [x] Reduce CPU usage
- - [x] Reduce RAM usage
+ - [x] Reduce CPU usage (used time.sleep() to stop the while loop from running as fast as possible)
+ - [x] Reduce RAM usage (used generators instead of loading the whole data set into RAM) (RAM usage is now ~0.05MB MAX)
  - [ ] Add reserved times to Google Calendar
 
 
