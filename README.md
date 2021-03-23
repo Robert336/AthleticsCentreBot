@@ -18,7 +18,6 @@ Next steps: (not in order)
  - [ ] (in-progress) Transform into web app using Flask
  - [ ] Remotly Host on Raspberry Pi to run 24/7
  - [ ] Impliment multi-thread processing to handle multiple users at the same time
- - [ ] General optimisation. Use faster search algorithims for finding Slot IDs
  - [x] Fix login timeout issues
  - [x] Reduce CPU usage
  - [x] Reduce RAM usage
