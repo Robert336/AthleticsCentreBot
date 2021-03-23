@@ -1,6 +1,11 @@
+"""
+Developed by: Robert Mazza
+"""
+
 from selenium.webdriver.support.select import Select
 import time
 import datetime
+import requests
 
 
 # TODO: handle exceptions and errors like wrong email/password
@@ -21,6 +26,11 @@ def login(email, password, driver):
     # Simulates clicking the login button
     loginButtonElement = driver.find_element_by_name("submit_Login")
     loginButtonElement.click()
+
+
+# logout the user
+def logout(driver):
+    driver.get('https://www.laurierathletics.com/ecommerce/user/logout.php')
 
 
 # uses the search function on the website to narrow search
@@ -75,18 +85,11 @@ def find_slot_id(name_str, date_str, time_str, table_data):
 
 # Executes HTTP POST request to reserve the specified slot (slot_id)
 def reserve(slot_id, driver):
-    t0 = time.time()  # start timer
     # sending HTTP 'POST' reservation request to server
     response = driver.request('POST', 'https://www.laurierathletics.com/ecommerce/user/backendcrud.php',
                               data={"waiver1": "Agree", "waiver2": "Agree", "SlotID": slot_id, "makereservation": "1"})
-    print(response)
-
-    t1 = time.time()  # end timer
-    total_time = t1 - t0
-    print("Execution time = %d" % total_time)
-
-    if '200' in response:
-        print("HTTP request success!")
+    print(response.status_code)
+    print("Time to send request: ", response.elapsed)
 
     return response
 
