@@ -16,7 +16,8 @@ includes the driver for Chrome v89, if you are running a different version of Ch
 
 Next steps: (not in order)
  - [ ] (in-progress) Transform into web app using Flask
- - [ ] (in-progress, 24/7 part is done) Remotly Host on Raspberry Pi to run 24/7
+ - [ ] ~~Remotly Host on Raspberry Pi to run 24/7~~
+ - [ ] Host on Azure servers for 24/7 use
  - [ ] Impliment multi-thread processing to handle multiple users at the same time
  - [x] Fix login timeout issues
  - [x] Reduce CPU usage (used time.sleep() to stop the while loop from running as fast as possible)
