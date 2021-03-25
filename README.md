@@ -1,8 +1,7 @@
 # AthleticsCentreBot
 ### Basic functionality is complete.
 
-#### tldr
-Automatically reserve spots at the Athletic Centre faster than everyone else.
+#### tldr: Automatically reserve spots at the Athletic Centre faster than everyone else.
 
 ### Description
 Uses Python and Selenium to automate the process of logging in and booking a time slot at the WLU Athletics Centre.
