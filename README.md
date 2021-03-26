@@ -23,7 +23,7 @@ includes the driver for Chrome v89, if you are running a different version of Ch
  - [ ] ~~Impliment multi-thread processing to handle multiple users at the same time~~
  - [x] Fix login timeout issues
  - [x] Reduce CPU usage, used time.sleep() to stop the while loop from running as fast as possible
- - [x] Reduce RAM usage, used generators instead of loading the whole data set into RAM. RAM usage is now ~0.05MB MAX for searching, and ~24MB total.
+ - [x] Reduce RAM usage, used generators instead of loading the whole data set into RAM. RAM usage is now ~0.05MB MAX for searching, and ~28MB for the script and ~24MB for the Chrome instance.
  - [ ] Add reserved times to Google Calendar
 
 
