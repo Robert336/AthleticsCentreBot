@@ -68,16 +68,16 @@ def main():
             functions.login(user_data["email"], user_data["password"], driver)
             logged_in = 1
 
-        elif logged_in == 1 and now.hour == reservation_time_obj.hour and now.minute == 0 and now.second < 10:
+        elif logged_in == 1 and now.hour == reservation_time_obj.hour and now.minute == reservation_time_obj.minute and now.second < 10:
             functions.reserve(slot_id, driver)
 
-        elif logged_in == 1:
+        elif logged_in == 1 and now.minute > reservation_time_obj.minute and now.second > reservation_time_obj.second:
             print("logging out")
             functions.logout(driver)
             logged_in = 0
 
         if logged_in == 0:
-            time.sleep(3)  # if still far from reservation time, use less CPU with time.sleep
+            time.sleep(2)  # if still far from reservation time, use less CPU with time.sleep
             # schedule.run_pending()
 
         # used to sync data if ran 24/7 and days become out-of-sync
@@ -112,4 +112,5 @@ def sync_days(driver, user_data):
     return slot_id, reservation_time_obj
 
 
+print("Version - 1.11")
 main()  # run the script
