@@ -63,7 +63,7 @@ def main():
         # login 5 mins before reservation time
         now = datetime.datetime.now()
         today = datetime.datetime.today()
-        if logged_in == 0 and now.hour == (reservation_time_obj.hour - 1) and now.minute >= 59 and now.second >= 30:
+        if logged_in == 0 and now.hour == (reservation_time_obj.hour - 1) and now.minute == 59 and now.second >= 30:
             print(">>> Logging in as: %s" % user_data["email"])
             functions.login(user_data["email"], user_data["password"], driver)
             logged_in = 1
@@ -81,7 +81,8 @@ def main():
             # schedule.run_pending()
 
         # used to sync data if ran 24/7 and days become out-of-sync
-        if today.day + 4 != reservation_time_obj.day:
+        timedelta = reservation_time_obj - today
+        if timedelta.days != 4:
             # login to portal
             print(">>> Logging in as: %s" % user_data["email"])
             functions.login(user_data["email"], user_data["password"], driver)

