@@ -1,5 +1,5 @@
 # AthleticsCentreBot
-### Basic functionality is complete.
+### Status: ✅ Basic functionality is complete. Switching focus to making it a webapp [here](https://github.com/Robert336/AthleticsCentreBot-Azure-webapp).
 
 #### tldr: Automatically reserve spots at the Athletic Centre faster than everyone else.
 
