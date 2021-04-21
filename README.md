@@ -27,5 +27,5 @@ includes the driver for Chrome v89, if you are running a different version of Ch
  - [ ] Add reserved times to Google Calendar
 
 
-#### *secuirty flaw discovery*: The site has no authentication for canceling reservations, meaning if you send a 'POST' request to the server with the correct parameters it will remove the reservation. Even if it doesn't belong to you... yikes.
+####  ⚠️ *secuirty flaw discovery*: The site has no authentication for canceling reservations, meaning if you send a 'POST' request to the server with the correct parameters it will remove the reservation. Even if it doesn't belong to you... yikes.
 Disclaimer: I tested this using a booking made by my friend. No reservations were harmed in this discovery.
